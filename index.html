@@ -25,12 +25,40 @@
   </nav>
 
   <div class="container">
+
+    <input type="text" class="form-control" placeholder="Search for employees" id="employee-search">
     <div class="row">
-      <input type="text" class="col-md-12 form-control" placeholder="Search for employees" id="employee-search">
-      <!-- <div class="well col-md-12" id="data">
-      </div> -->
+
+      <!-- 3 Columns -->
+
+      <div class="container bootstrap-header-table">
+        <div class="row header-row">
+          <div>
+            <div class="col-xs-4 header-column">First Name</div>
+            <div class="col-xs-4 header-column">Last Name</div>
+            <div class="col-xs-4 header-column">Position</div>
+          </div>
+        </div>
+        <div class="row body-rows" id="employees-table">
+        </div>
+      </div>
     </div>
+
   </div>
+
+  <div class="modal fade" id="genericModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body"></div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
   <!-- Latest compiled and minified jQuery 3.2.1 JavaScript -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
