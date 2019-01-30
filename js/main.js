@@ -1,85 +1,49 @@
-$(function() {
+$(function () {
     console.log(`hello again world!`);
-
-    $("#teams-menu").on("click",function () { 
-        event.preventDefault();
-        //Making AJAX GET request
-        $.ajax({
-            url: "https://polar-headland-60757.herokuapp.com/teams",
-            type: "GET",
-            contentType: "application/json"
-        })
-        .done(function (data) {
-
-            $("#data").empty();
-            data = JSON.stringify(data);
-            $("#data").append( "<h3>Teams</h3>",data);
-        })
-        .fail(function (err) {
-            console.log("error: " + err.statusText);
-        });
-        
-    });
-
-    $("#employees-menu").on("click",function () { 
-        event.preventDefault();
-        //Making AJAX GET request
+    //Assignment 2 starts
+    let employeesModel = [];
+    function initializeEmployeesModel() {
         $.ajax({
             url: "https://polar-headland-60757.herokuapp.com/employees",
             type: "GET",
             contentType: "application/json"
         })
-        .done(function (data) {
+            .done(function (data) {
+                employeesModel = data;
+                refreshEmployeeRows(employeesModel);
+            })
+            .fail(function (err) {
+                console.log("error: " + err.statusText);
+                showGenericModal('Error', 'Unable to get Employees');
+            });
+    }
 
-            $("#data").empty();
-            data = JSON.stringify(data);
-            $("#data").append( "<h3>Employees</h3>",data);
-        })
-        .fail(function (err) {
-            console.log("error: " + err.statusText);
-        });
+    initializeEmployeesModel();
+
+    function showGenericModal(title, message) {
+        $("#genericModal .modal-title").text(title);
+        $("#genericModal .modal-body").text(message);
+        $("#genericModal").modal('show');
+    }
+
+    function refreshEmployeeRows(employees) {
+        console.log(`inside refreshEmployeeRows`);
+        //First try
+        let myTemplate = _.template(`<% _.forEach(employees, function(currentEmp){ %>` + //evaluate
+            + `<div class="row body-row" data-id=" <%-currentEmp._id%>"> ` //escape start
+            + `<div class="col-xs-4 body-column"> <%-currentEmp.FirstName%> </div>`
+            + `<div class="col-xs-4 body-column"><%-currentEmp.LastName%> </div>`
+            + `<div class="col-xs-4 body-column"><%-currentEmp.Position.PositionName%> </div>` //escape end
+            + `<% }); %>` + `</div>`);
+        $("employees-table").empty();
+        console.log(employees[0]._id);
+        console.log(employees[0].FirstName);
+        console.log(employees[0].LastName);
+        console.log(employees[0].Position.PositionName);
+        // console.log(myTemplate({'employees' : employees}));
+      //  $("employees-table").append();
         
-    });
+    }
 
-
-    $("#projects-menu").on("click",function () { 
-        event.preventDefault();
-        //Making AJAX GET request
-        $.ajax({
-            url: "https://polar-headland-60757.herokuapp.com/projects",
-            type: "GET",
-            contentType: "application/json"
-        })
-        .done(function (data) {
-
-            $("#data").empty();
-            data = JSON.stringify(data);
-            $("#data").append( "<h3>Projects</h3>",data);
-        })
-        .fail(function (err) {
-            console.log("error: " + err.statusText);
-        });
-        
-    });
-
-    $("#positions-menu").on("click",function () { 
-        event.preventDefault();
-        //Making AJAX GET request
-        $.ajax({
-            url: "https://polar-headland-60757.herokuapp.com/positions",
-            type: "GET",
-            contentType: "application/json"
-        })
-        .done(function (data) {
-
-            $("#data").empty();
-            data = JSON.stringify(data);
-            $("#data").append( "<h3>Positions</h3>",data);
-        })
-        .fail(function (err) {
-            console.log("error: " + err.statusText);
-        });
-        
-    });
-
+    //Assignment 2 ends
 });
