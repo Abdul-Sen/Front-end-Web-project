@@ -36,14 +36,14 @@ $(function () {
                 '</div>' +
             '<% }); %>');
 
-        $("employees-table").empty();
+        $("#employees-table").empty();
         // console.log(employees[0]._id);
         // console.log(employees[0].FirstName);
         // console.log(employees[0].LastName);
         // console.log(employees[0].Position.PositionName);
-        console.log(myTemplate({'employees' : employees}));
+        // console.log(myTemplate({'employees' : employees}));
          myTemplate({'employees' : employees});
-       $("employees-table").append(myTemplate({'employees' : employees}));
+       $("#employees-table").append(myTemplate({'employees' : employees}));
     }
 
     function getFilteredEmployeesModel(filterString)
