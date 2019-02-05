@@ -67,16 +67,16 @@ $(function () {
         refreshEmployeeRows(getFilteredEmployeesModel((this).value)); //refreshes row /w a given string
     });
 
-    $("#employees-table").on("click", ".row", function () { // watch the whole document for when existing (or new) tr elements are clicked
+    $("#employees-table").on("click", ".body-row", function () { // watch the whole document for when existing (or new) tr elements are clicked
         let result = getEmployeeModelById($(this).attr("data-id"));
 
         result[0].HireDate = moment(result[0].HireDate).format("LL"); //creating a moment obj, then formating date, then setting that date to the current obj
         let bodyTemplate = _.template(
-            '<strong>Address:</strong>'+
-            '<%- employee.AddressStreet %> <%- employee.AddressCity %>, <%- employee.AddressState %> <%-employee.AddressZip %>'+
-            '<br> <strong>Phone Number:</strong>'+
-            '<%- employee.PhoneNum %> ext: <%-employee.Extension%><br>'+
-            '<strong>Hire Date:</strong>'+
+            '<strong>Address:</strong>' +
+            '<%- employee.AddressStreet %> <%- employee.AddressCity %>, <%- employee.AddressState %> <%-employee.AddressZip %>' +
+            '<br> <strong>Phone Number:</strong>' +
+            '<%- employee.PhoneNum %> ext: <%-employee.Extension%><br>' +
+            '<strong>Hire Date:</strong>' +
             '<%- employee.HireDate %>');
 
         let templateBody = bodyTemplate({ 'employee': result[0] });
