@@ -46,3 +46,15 @@ $bootstrap-header-table-color: #F5F5F5;
         overflow-x: hidden;
     }
 }
+.ms-parent {
+    width: 100% !important;
+}
+.ms-drop {
+    input[type="checkbox"]
+    {
+        margin-right: 8px;
+    }
+    input[type="radio"] {
+        margin-right: 8px;
+    }
+}
