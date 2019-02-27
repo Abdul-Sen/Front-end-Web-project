@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 //stateless component
 class EmployeesPanel extends Component {
@@ -44,7 +45,7 @@ class EmployeesPanel extends Component {
               </tbody>
             </table>
           </div>
-          <a href="/employees" className="btn btn-primary form-control">View All Employee Data</a>
+          <Link to="/employees" className="btn btn-primary form-control">View All Employee Data</Link>
         </div>
       </div>)
     }

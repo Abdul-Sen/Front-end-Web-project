@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 //stateless component
 class SideBar extends Component {
@@ -12,12 +13,13 @@ class SideBar extends Component {
     render() {
         return (<div className="col-sm-3 col-md-2  sidebar">
             <ul className="nav nav-sidebar">
-                <li className={(this.props.highlight === "Overview" ? 'active' : '')}><a href="/">Overview <span className="sr-only"></span></a></li>
+                <li className={(this.props.highlight === "Overview" ? 'active' : '')}><Link to="/">Overview</Link></li>
             </ul>
             <ul className="nav nav-sidebar">
-                <li className={(this.props.highlight === "Projects" ? 'active' : '')} ><a href="/projects">Projects</a></li>
-                <li className={(this.props.highlight === "Teams" ? 'active' : '')}><a href="/teams">Teams</a></li>
-                <li className={(this.props.highlight === "Employees" ? 'active' : '')}><a href="/employees">Employees</a></li>
+                <li className={(this.props.highlight === "Projects" ? 'active' : '')}><Link to='/projects'>Projects</Link></li>
+                
+                <li className={(this.props.highlight === "Teams" ? 'active' : '')}><Link to="/teams">Teams</Link></li>
+                <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/employees">Employees</Link></li>
             </ul>
         </div>)
     }

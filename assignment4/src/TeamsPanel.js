@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 //stateless component
 class TeamsPanel extends Component {
@@ -45,7 +46,7 @@ class TeamsPanel extends Component {
                   </tbody>
                 </table>
               </div>
-              <a href="/teams" className="btn btn-primary form-control">View All Team Data</a>
+              <Link to="/teams" className="btn btn-primary form-control">View All Team Data</Link>
             </div>
           </div>
         )
