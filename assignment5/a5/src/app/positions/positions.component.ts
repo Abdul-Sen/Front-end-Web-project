@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PositionService } from '../data/position.service';
 import { Position} from '../data/position';
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'app-positions',
@@ -13,13 +14,19 @@ export class PositionsComponent implements OnInit, OnDestroy {
   getPositionsSub: any;
   loadingError: boolean = false;
 
-  constructor(private ps: PositionService) { }
+  constructor(private ps: PositionService, private router: Router) { }
 
   ngOnInit() {
     this.getPositionsSub = this.ps.getPositions().subscribe(
-        (next)=>{console.log(next); this.positions = next;},
+        (next)=>{this.positions = next;},
         (err)=>{this.loadingError = true;},
         ()=>{console.log(`complete`)});
+  }
+
+  routePosition(id: string)
+  {
+    console.log(id);
+    this.router.navigate(['/position/', id]); //Instance route navigation
   }
 
   ngOnDestroy(){

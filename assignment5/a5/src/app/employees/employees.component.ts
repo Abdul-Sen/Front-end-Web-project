@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Employee } from '../data/employee';
 import { EmployeeService } from '../data/employee.service';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
@@ -12,19 +12,22 @@ export class EmployeesComponent implements OnInit, OnDestroy {
   employees: Employee[] = [];
   getEmployeeSub: any;
   loadingError: boolean = false;
-  constructor(private es: EmployeeService) { }
+  constructor(private es: EmployeeService, private router: Router) { }
 
   ngOnInit() {
 
     this.getEmployeeSub = this.es.getEmployees().subscribe(
-      (next)=>{console.log(next); this.employees = next;},
+      (next)=>{ this.employees = next;},
       (err)=>{this.loadingError = true;},
       ()=>{console.log(`complete`)}
       );
   }
-  // next(item){console.log(`next item is : ${item}`)},
-  // error(err){ this.loadingError = true; console.log(`error occured getting employeess!!`)},
-  // complete(data){ console.log(`here it is everyone! ${data}`)}
+
+  routeEmployee(id: string)
+  {
+    console.log(id);
+    this.router.navigate(['/employee/', id]); //Instance route navigation
+  }
 
   ngOnDestroy(){
     if(this.getEmployeeSub && this.getEmployeeSub != undefined) this.getEmployeeSub.unsubscribe();
