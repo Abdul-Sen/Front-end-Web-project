@@ -29,7 +29,7 @@ export class PositionComponent implements OnInit, OnDestroy {
       () => { console.log(`completed`) });
   }
 
-  OnSubmit() {
+  onSubmit() {
     this.savePositionSubscription = this.ps.savePosition(this.position).subscribe(
       (data) => {
         console.log(data);
@@ -57,11 +57,5 @@ export class PositionComponent implements OnInit, OnDestroy {
     console.log(this.savePositionSubscription)
     if (this.savePositionSubscription && this.savePositionSubscription != undefined)
       this.savePositionSubscription.unsubscribe();
-
-
-    console.log(this.paramSubscription)
-    if (this.paramSubscription && this.paramSubscription != undefined)
-      this.paramSubscription.unsubscribe();
   }
-
 }

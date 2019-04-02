@@ -735,7 +735,7 @@ a.accordion-toggle i {
 }
 .form-group .form-control {
 	padding: 7px 12px;
-	border-color: #f2f2f2;
+	border-color: #d2d2d2;
 	box-shadow: none;
 }
 textarea#message {
@@ -786,3 +786,4 @@ a.social-icon:hover, a.social-icon:active, a.social-icon:focus {
 	color: #3276b1;
 	border-color: #3276b1;
 }
+.table-hover tr{ cursor: pointer; }
