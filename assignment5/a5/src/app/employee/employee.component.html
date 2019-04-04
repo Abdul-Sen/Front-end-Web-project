@@ -3,6 +3,8 @@
     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non odio sed eros tristique bibendum.</p>
   </div>
   <div class="container">
+    {{employee | json}}
+    
   <div class="row">
   <div class="col-md-12">
     <form  #f="ngForm" (ngSubmit)="onSubmit()">
@@ -26,7 +28,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label class="control-label" for="Position">Position:</label>
-            <select class="form-control"  id="Position" name="Position" >
+            <select class="form-control"  id="Position" name="Position" [(ngModel)]="employee.Position" >
               <option *ngFor="let currentPosition of positions" [value]="currentPosition._id">{{currentPosition.PositionName}}</option>
             </select>
           </div>

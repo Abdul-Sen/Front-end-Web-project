@@ -23,6 +23,6 @@ export class EmployeeService {
 
   getEmployee(id)
   {
-    return this.myHttp.get<EmployeeRaw[]>(`https://polar-headland-60757.herokuapp.com/employee/${id}`);//Returns array with 1 element
+    return this.myHttp.get<EmployeeRaw[]>(`https://polar-headland-60757.herokuapp.com/employee-raw/${id}`);//Returns array with 1 element
   }
 }
